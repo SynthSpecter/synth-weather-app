@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: streamster;
+  src: local(
+    c: \Users\Kevin\OneDrive\Documents\ludique\streamster\Streamster.ttf
+  );
+  background-color: #0c0032;
+  color: #e6e6e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.weather-card {
+  background-color: #480032;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.city {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.temperature {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.condition {
+  font-size: 18px;
+}
