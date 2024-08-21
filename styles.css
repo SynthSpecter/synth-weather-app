@@ -1,15 +1,31 @@
+@font-face {
+  font-family: 'streamster';
+  src: url('./Streamster.ttf') format('truetype');
+}
+
 body {
   margin: 0;
-  font-family: streamster;
-  src: local(
-    c: \Users\Kevin\OneDrive\Documents\ludique\streamster\Streamster.ttf
-  );
+  font-family: 'streamster', sans-serif;
   background-color: #0c0032;
   color: #e6e6e6;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  transition: background-color 0.5s ease;
+}
+
+body.sunny {
+  background-color: #fdb813;
+}
+body.cloudy {
+  background-color: #b4c8d8;
+}
+body.rainy {
+  background-color: #36454f;
+}
+body.snowy {
+  background-color: #fffafa;
 }
 
 .container {
@@ -21,10 +37,30 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.city-input {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.get-weather-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #480032;
+  color: #e6e6e6;
+  border: none;
+  cursor: pointer;
+}
+
+.get-weather-btn:hover {
+  background-color: #5a0040;
 }
 
 .city {
-  font-size: 24px;
+  font-size: 40px;
   margin-bottom: 10px;
 }
 
@@ -34,5 +70,11 @@ body {
 }
 
 .condition {
+  font-size: 40px;
+}
+
+.error-message {
+  color: red;
   font-size: 18px;
+  margin-top: 20px;
 }

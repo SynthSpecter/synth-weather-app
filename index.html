@@ -12,10 +12,14 @@
 <body>
    <div class="container">
       <div class="weather-card">
+         <input type="text" class="city-input" placeholder="Entrez une ville" />
+         <button class="get-weather-btn">Obtenir la météo</button>
          <div class="city">Loading...</div>
          <div class="temperature">--°C</div>
+         <img class="weather-icon" src="" alt="Weather icon">
          <div class="condition">Fetching data...</div>
       </div>
+      <div class="error-message" style="display: none;">Erreur lors du chargement des données météo.</div>
    </div>
 </body>
 
