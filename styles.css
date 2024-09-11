@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'streamster';
-  src: url('./Streamster.ttf') format('truetype');
+  font-family: 'Audiowide';
+  src: url('./Audiowide-Regular.ttf');
 }
 
 body {
   margin: 0;
-  font-family: 'streamster', sans-serif;
+  font-family: 'Audiowide', sans-serif;
   background-color: #0c0032;
   color: #e6e6e6;
   display: flex;
