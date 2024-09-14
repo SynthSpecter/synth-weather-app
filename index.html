@@ -5,15 +5,27 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="styles.css">
-   <title>Synthwave Weather App</title>
+   <title>Synthweather</title>
    <script src="script.js"></script>
 </head>
 
 <body>
    <main class="container">
       <div class="weather-card">
-         <input type="text" class="city-input" placeholder="Entrez une ville" />
-         <button class="get-weather-btn">Obtenir la météo</button>
+         <div class="menu-bar">
+            <button id="leftMenuBtn" class="menu-btn left-btn">☰</button>
+            <input type="text" class="city-input" placeholder="Entrez une ville" />
+            <button class="get-weather-btn">Obtenir la météo</button>
+            <button id="rightMenuBtn" class="menu-btn right-btn">☰</button>
+         </div>
+         <div id="leftMenu" class="side-menu left-menu">
+            <h2>Menu Gauche</h2>
+            <span>pouet</span>
+         </div>
+         <div id="rightMenu" class="side-menu right-menu">
+            <h2>Menu Droit</h2>
+            <span>pouet</span>
+         </div>
          <div class="city">Loading...</div>
          <div class="temperature">--°C</div>
          <img class="weather-icon" src="" alt="Weather icon">

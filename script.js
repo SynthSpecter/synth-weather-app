@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const temperatureElement = document.querySelector('.temperature')
   const conditionElement = document.querySelector('.condition')
   const iconElement = document.querySelector('.weather-icon')
+  const leftMenuBtn = document.getElementById('leftMenuBtn')
+  const rightMenuBtn = document.getElementById('rightMenuBtn')
+  const leftMenu = document.getElementById('leftMenu')
+  const rightMenu = document.getElementById('rightMenu')
 
   const weatherIcons = {
     113: { day: 'wsymbol_0001_sunny', night: 'wsymbol_0008_clear_sky_night' },
@@ -156,6 +160,34 @@ document.addEventListener('DOMContentLoaded', function () {
     iconElement.src = `https://assets.weatherstack.com/images/wsymbols01_png_64/${iconName}.png`
     iconElement.alt = conditionElement.textContent
   }
+
+  leftMenuBtn.addEventListener('click', () => {
+    if (leftMenu.classList.contains('open')) {
+      leftMenu.classList.remove('open')
+      leftMenu.classList.add('closing')
+      setTimeout(() => {
+        leftMenu.classList.remove('closing')
+        leftMenu.style.visibility = 'hidden'
+      }, 500)
+    } else {
+      leftMenu.style.visibility = 'visible'
+      leftMenu.classList.add('open')
+    }
+  })
+
+  rightMenuBtn.addEventListener('click', () => {
+    if (rightMenu.classList.contains('open')) {
+      rightMenu.classList.remove('open')
+      rightMenu.classList.add('closing')
+      setTimeout(() => {
+        rightMenu.classList.remove('closing')
+        rightMenu.style.visibility = 'hidden'
+      }, 500)
+    } else {
+      rightMenu.style.visibility = 'visible'
+      rightMenu.classList.add('open')
+    }
+  })
 
   // Initialisation
   getWeatherData()
