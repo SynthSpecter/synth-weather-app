@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `https://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`
       )
       const data = await response.json()
+      console.log('Données API reçues:', data) // Pour le débogage
 
       if (data.error) {
         throw new Error(data.error.info)
@@ -142,6 +143,32 @@ document.addEventListener('DOMContentLoaded', function () {
     conditionElement.textContent = frenchCondition
     updateBackground(data.current.weather_code)
     updateWeatherIcon(data.current.weather_code, data.current.is_day === 'yes')
+
+    // Mise à jour du menu de gauche
+    document.getElementById(
+      'wind'
+    ).textContent = `${data.current.wind_speed} km/h ${data.current.wind_dir}`
+    document.getElementById(
+      'pressure'
+    ).textContent = `${data.current.pressure} mb`
+    document.getElementById(
+      'humidity'
+    ).textContent = `${data.current.humidity}%`
+    document.getElementById('uv').textContent = data.current.uv_index || 'N/A'
+    document.getElementById(
+      'visibility'
+    ).textContent = `${data.current.visibility} km`
+
+    // Mise à jour du menu de droite
+    document.getElementById(
+      'feelslike'
+    ).textContent = `${data.current.feelslike}°C`
+    document.getElementById(
+      'cloudcover'
+    ).textContent = `${data.current.cloudcover}%`
+    document.getElementById(
+      'precipitation'
+    ).textContent = `${data.current.precip} mm`
   }
 
   function updateBackground(weatherCode) {

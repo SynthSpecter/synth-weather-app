@@ -150,6 +150,8 @@ body.snowy {
 .side-menu h2 {
   color: #e6e6e6;
   margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
 }
 
 @keyframes slideInLeft {
@@ -194,4 +196,18 @@ body.snowy {
     transform: translateX(0);
     opacity: 0;
   }
+}
+
+.weather-detail {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.detail-value {
+  color: #fdb813;
 }
