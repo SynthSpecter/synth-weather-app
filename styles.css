@@ -1,8 +1,10 @@
+/* Définition de la police personnalisée / Custom font definition */
 @font-face {
   font-family: 'Audiowide';
   src: url('./Audiowide-Regular.ttf');
 }
 
+/* Styles généraux / General styles */
 body {
   margin: 0;
   font-family: 'Audiowide', sans-serif;
@@ -15,6 +17,7 @@ body {
   transition: background-color 0.5s ease;
 }
 
+/* Styles pour différentes conditions météo / Styles for different weather conditions */
 body.sunny {
   background-color: #fdb813;
 }
@@ -28,10 +31,12 @@ body.snowy {
   background-color: #fffafa;
 }
 
+/* Conteneur principal / Main container */
 .container {
   text-align: center;
 }
 
+/* Carte météo / Weather card */
 .weather-card {
   background-color: #480032;
   padding: 20px;
@@ -42,12 +47,22 @@ body.snowy {
   overflow: visible;
 }
 
+/* Barre de menu / Menu bar */
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Champ de saisie de la ville / City input field */
 .city-input {
   padding: 10px;
   font-size: 16px;
   margin-right: 10px;
 }
 
+/* Bouton pour obtenir la météo / Get weather button */
 .get-weather-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -61,33 +76,7 @@ body.snowy {
   background-color: #5a0040;
 }
 
-.city {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-.temperature {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.condition {
-  font-size: 40px;
-}
-
-.error-message {
-  color: red;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.menu-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
+/* Boutons de menu / Menu buttons */
 .menu-btn {
   background-color: transparent;
   color: #e6e6e6;
@@ -100,11 +89,11 @@ body.snowy {
 .left-btn {
   left: 20px;
 }
-
 .right-btn {
   right: 20px;
 }
 
+/* Menus latéraux / Side menus */
 .side-menu {
   position: absolute;
   top: 60px;
@@ -129,29 +118,18 @@ body.snowy {
   transform: translateX(0);
 }
 
+/* Animations pour les menus latéraux / Animations for side menus */
 .left-menu.open {
   animation: slideInLeft 0.5s forwards;
-  visibility: visible;
 }
-
 .right-menu.open {
   animation: slideInRight 0.5s forwards;
-  visibility: visible;
 }
-
 .left-menu.closing {
   animation: slideOutLeft 0.5s forwards;
 }
-
 .right-menu.closing {
   animation: slideOutRight 0.5s forwards;
-}
-
-.side-menu h2 {
-  color: #e6e6e6;
-  margin-bottom: 20px;
-  font-size: 24px;
-  text-align: center;
 }
 
 @keyframes slideInLeft {
@@ -198,6 +176,15 @@ body.snowy {
   }
 }
 
+/* Titres des menus latéraux / Side menu titles */
+.side-menu h2 {
+  color: #e6e6e6;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Détails météo / Weather details */
 .weather-detail {
   margin-bottom: 15px;
   font-size: 16px;
@@ -210,4 +197,26 @@ body.snowy {
 
 .detail-value {
   color: #fdb813;
+}
+
+/* Informations météo principales / Main weather information */
+.city {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.temperature {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.condition {
+  font-size: 40px;
+}
+
+/* Message d'erreur / Error message */
+.error-message {
+  color: red;
+  font-size: 18px;
+  margin-top: 20px;
 }
