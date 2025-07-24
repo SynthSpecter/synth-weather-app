@@ -7,13 +7,12 @@
    <link rel="stylesheet" href="styles.css">
    <title>Synthweather</title>
    <!-- Chargement des scripts JavaScript -->
-   <!-- Loading JavaScript scripts -->
-   <script src="./scripts/config.js"></script>
-   <script src="./scripts/translations.js"></script>
-   <script src="./scripts/weatherIcons.js"></script>
-   <script src="./scripts/uiManager.js"></script>
-   <script src="./scripts/weatherManager.js"></script>
-   <script src="./scripts/app.js"></script>
+   <script src="./scripts/config.js" defer></script>
+   <script src="./scripts/translations.js" defer></script>
+   <script src="./scripts/weatherIcons.js" defer></script>
+   <script src="./scripts/uiManager.js" defer></script>
+   <script src="./scripts/weatherManager.js" defer></script>
+   <script src="./scripts/app.js" defer></script>
 </head>
 
 <body>
@@ -24,6 +23,8 @@
             <button id="leftMenuBtn" class="menu-btn left-btn">☰</button>
             <input type="text" class="city-input" placeholder="Entrez une ville" />
             <button class="get-weather-btn">Obtenir la météo</button>
+            <button class="location-btn">Météo à ma position</button>
+            <button class="language-btn">English</button>
             <button id="rightMenuBtn" class="menu-btn right-btn">☰</button>
          </div>
 
@@ -71,6 +72,16 @@
                   <span id="feelslike" class="detail-value"></span>
                </div>
             </div>
+            <div class="search-history">
+               <h3>Historique</h3>
+               <!-- Les éléments d'historique seront ajoutés dynamiquement -->
+            </div>
+         </div>
+
+         <!-- Indicateur de chargement / Loading indicator -->
+         <div class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Chargement des données météo...</p>
          </div>
 
          <!-- Informations météo principales / Main weather information -->
