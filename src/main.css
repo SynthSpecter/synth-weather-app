@@ -1,7 +1,7 @@
 /* Définition de la police personnalisée / Custom font definition */
 @font-face {
   font-family: 'Audiowide';
-  src: url('./Audiowide-Regular.ttf');
+  src: url('../assets/fonts/Audiowide-Regular.ttf');
 }
 
 /* Styles généraux / General styles */
@@ -62,7 +62,7 @@ body.snowy {
   align-items: center;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
 }
 
 .menu-bar button {
