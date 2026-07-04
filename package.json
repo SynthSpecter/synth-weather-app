@@ -1,0 +1,24 @@
+{
+  "name": "synth-weather-app",
+  "version": "1.1.0",
+  "description": "A bilingual synthwave weather app using the public Open-Meteo APIs.",
+  "main": "index.html",
+  "scripts": {
+    "start": "node scripts/server.js",
+    "dev": "node scripts/server.js",
+    "check": "node --check scripts/config.js && node --check scripts/translations.js && node --check scripts/weatherIcons.js && node --check scripts/uiManager.js && node --check scripts/weatherManager.js && node --check scripts/app.js && node --check scripts/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SynthSpecter/synth-weather-app.git"
+  },
+  "keywords": [
+    "weather",
+    "open-meteo",
+    "synthwave",
+    "vanilla-javascript"
+  ],
+  "author": "Kévin Thouroude-Leroux",
+  "license": "MIT",
+  "homepage": "https://github.com/SynthSpecter/synth-weather-app#readme"
+}

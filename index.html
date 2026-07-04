@@ -1,97 +1,178 @@
 <!DOCTYPE html>
-<html lang="fr">
+<!-- Document HTML principal / Main HTML document -->
+<html lang="fr" data-theme="synth">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./src/main.css">
-   <title>Synthweather</title>
-   <!-- Chargement des scripts JavaScript -->
-   <script src="./src/scripts/config.js" defer></script>
-   <script src="./src/scripts/translations.js" defer></script>
-   <script src="./src/scripts/weatherIcons.js" defer></script>
-   <script src="./src/scripts/uiManager.js" defer></script>
-   <script src="./src/scripts/weatherManager.js" defer></script>
-   <script src="./src/scripts/app.js" defer></script>
+  <!-- Encodage compatible avec les accents / Encoding compatible with accents -->
+  <meta charset="UTF-8">
+  <!-- Adaptation mobile / Mobile viewport support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titre de l'onglet / Browser tab title -->
+  <title>Synth Weather</title>
+  <!-- Icône vide pour éviter une requête favicon / Empty icon to avoid a favicon request -->
+  <link rel="icon" href="data:,">
+  <!-- Feuille de style locale / Local stylesheet -->
+  <link rel="stylesheet" href="./styles/main.css">
 </head>
 
 <body>
-   <main class="container">
-      <div class="weather-card">
-         <!-- Barre de menu / Menu bar -->
-         <div class="menu-bar">
-            <button id="leftMenuBtn" class="menu-btn left-btn">☰</button>
-            <input type="text" class="city-input" placeholder="Entrez une ville" />
-            <button class="get-weather-btn">Obtenir la météo</button>
-            <button class="location-btn">Météo à ma position</button>
-            <button class="language-btn">English</button>
-            <button id="rightMenuBtn" class="menu-btn right-btn">☰</button>
-         </div>
+  <!-- Lien d'accessibilité vers le contenu / Accessibility link to the content -->
+  <a class="skip-link" href="#cityInput" data-i18n="skipLink">Aller à la recherche</a>
 
-         <!-- Menu latéral gauche / Left side menu -->
-         <div id="leftMenu" class="side-menu left-menu">
-            <h2>Détails</h2>
-            <div>
-               <div class="weather-detail">
-                  <span class="detail-label">Vent :</span>
-                  <span id="wind" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">Pression :</span>
-                  <span id="pressure" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">Humidité :</span>
-                  <span id="humidity" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">UV :</span>
-                  <span id="uv" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">Visibilité :</span>
-                  <span id="visibility" class="detail-value"></span>
-               </div>
-            </div>
-         </div>
+  <!-- Décor visuel de fond / Visual background scenery -->
+  <div class="weather-backdrop" aria-hidden="true">
+    <!-- Halo synthwave / Synthwave glow -->
+    <div class="glow-layer"></div>
+    <!-- Grille de fond / Background grid -->
+    <div class="grid-layer"></div>
+  </div>
 
-         <!-- Menu latéral droit / Right side menu -->
-         <div id="rightMenu" class="side-menu right-menu">
-            <h2>Prévisions</h2>
-            <div>
-               <div class="weather-detail">
-                  <span class="detail-label">Précipitations :</span>
-                  <span id="precipitation" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">Nuages :</span>
-                  <span id="cloudcover" class="detail-value"></span>
-               </div>
-               <div class="weather-detail">
-                  <span class="detail-label">Ressenti :</span>
-                  <span id="feelslike" class="detail-value"></span>
-               </div>
-            </div>
-            <div class="search-history">
-               <h3>Historique</h3>
-               <!-- Les éléments d'historique seront ajoutés dynamiquement -->
-            </div>
-         </div>
+  <!-- En-tête de l'app / App header -->
+  <header class="app-header">
+    <!-- Identité du projet / Project identity -->
+    <div class="brand-block">
+      <!-- Catégorie courte / Short category -->
+      <span class="brand-kicker" data-i18n="appKicker">Station météo</span>
+      <!-- Nom de l'app / App name -->
+      <h1>Synth Weather</h1>
+    </div>
 
-         <!-- Indicateur de chargement / Loading indicator -->
-         <div class="loading-spinner" style="display: none;">
-            <div class="spinner"></div>
-            <p>Chargement des données météo...</p>
-         </div>
-
-         <!-- Informations météo principales / Main weather information -->
-         <div class="city">Chargement...</div>
-         <div class="temperature">--°C</div>
-         <img class="weather-icon" src="" alt="Icône météo">
-         <div class="condition">Récupération des données...</div>
+    <!-- Actions globales / Global actions -->
+    <div class="header-actions">
+      <!-- Sélecteur de langue / Language selector -->
+      <div class="language-toggle" aria-label="Sélection de langue">
+        <!-- Bouton français / French button -->
+        <button class="lang-button active" type="button" data-language="fr">FR</button>
+        <!-- Bouton anglais / English button -->
+        <button class="lang-button" type="button" data-language="en">EN</button>
       </div>
-      <div class="error-message" style="display: none;">Erreur lors du chargement des données météo.</div>
-   </main>
+
+      <!-- Bouton de thème / Theme button -->
+      <button class="icon-button" id="themeButton" type="button" data-i18n-title="themeTitle">
+        <!-- Symbole du thème / Theme symbol -->
+        <span id="themeIcon" aria-hidden="true">◐</span>
+        <!-- Libellé du thème / Theme label -->
+        <span id="themeLabel" data-i18n="themeSynth">Synth</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Contenu principal / Main content -->
+  <main class="app-shell">
+    <!-- Panneau principal / Main panel -->
+    <section class="weather-panel" aria-label="Météo">
+      <!-- Formulaire de recherche / Search form -->
+      <form class="search-form" id="searchForm">
+        <!-- Champ ville / City field -->
+        <label class="search-label" for="cityInput" data-i18n="searchLabel">Ville</label>
+        <!-- Saisie de la ville / City input -->
+        <input id="cityInput" type="search" autocomplete="off" spellcheck="false" data-i18n-placeholder="cityPlaceholder">
+        <!-- Bouton de recherche / Search button -->
+        <button class="primary-action" type="submit" data-i18n="searchButton">Rechercher</button>
+        <!-- Bouton de géolocalisation / Geolocation button -->
+        <button class="secondary-action" id="locationButton" type="button" data-i18n="locationButton">Ma position</button>
+      </form>
+
+      <!-- Message d'erreur / Error message -->
+      <p class="error-message hidden" id="errorMessage" role="alert"></p>
+
+      <!-- Carte météo actuelle / Current weather card -->
+      <article class="current-card" id="currentWeather" aria-live="polite">
+        <!-- Icône météo locale / Local weather icon -->
+        <div class="weather-symbol" id="weatherSymbol" aria-hidden="true">☀</div>
+        <!-- Informations météo principales / Main weather information -->
+        <div class="current-copy">
+          <!-- Ville affichée / Displayed city -->
+          <p class="location-line" id="locationLine" data-i18n="defaultLocation">Paris, France</p>
+          <!-- Température actuelle / Current temperature -->
+          <p class="temperature-line" id="temperatureLine">--°C</p>
+          <!-- Condition météo / Weather condition -->
+          <p class="condition-line" id="conditionLine" data-i18n="conditionWaiting">En attente des données</p>
+          <!-- Date de mise à jour / Update date -->
+          <p class="updated-line" id="updatedLine" data-i18n="updatedWaiting">Pas encore actualisé</p>
+        </div>
+      </article>
+
+      <!-- Grille des détails / Details grid -->
+      <section class="details-grid" aria-label="Détails météo">
+        <!-- Ressenti / Feels like -->
+        <div class="detail-card">
+          <span data-i18n="feelsLikeLabel">Ressenti</span>
+          <strong id="feelsLikeValue">--</strong>
+        </div>
+        <!-- Vent / Wind -->
+        <div class="detail-card">
+          <span data-i18n="windLabel">Vent</span>
+          <strong id="windValue">--</strong>
+        </div>
+        <!-- Humidité / Humidity -->
+        <div class="detail-card">
+          <span data-i18n="humidityLabel">Humidité</span>
+          <strong id="humidityValue">--</strong>
+        </div>
+        <!-- Pression / Pressure -->
+        <div class="detail-card">
+          <span data-i18n="pressureLabel">Pression</span>
+          <strong id="pressureValue">--</strong>
+        </div>
+        <!-- Nuages / Clouds -->
+        <div class="detail-card">
+          <span data-i18n="cloudsLabel">Nuages</span>
+          <strong id="cloudsValue">--</strong>
+        </div>
+        <!-- Précipitations / Precipitation -->
+        <div class="detail-card">
+          <span data-i18n="precipitationLabel">Précipitations</span>
+          <strong id="precipitationValue">--</strong>
+        </div>
+      </section>
+    </section>
+
+    <!-- Panneau secondaire / Secondary panel -->
+    <aside class="side-panel" aria-label="Prévisions et historique">
+      <!-- Prévisions / Forecast -->
+      <section class="panel-card">
+        <!-- Titre des prévisions / Forecast title -->
+        <h2 data-i18n="forecastTitle">Prévisions</h2>
+        <!-- Liste générée en JavaScript / JavaScript-generated list -->
+        <div class="forecast-list" id="forecastList"></div>
+      </section>
+
+      <!-- Historique / History -->
+      <section class="panel-card">
+        <!-- En-tête historique / History header -->
+        <div class="history-header">
+          <!-- Titre historique / History title -->
+          <h2 data-i18n="historyTitle">Historique</h2>
+          <!-- Effacer historique / Clear history -->
+          <button class="text-action" id="clearHistoryButton" type="button" data-i18n="clearHistoryButton">Effacer</button>
+        </div>
+        <!-- Liste historique / History list -->
+        <div class="history-list" id="historyList"></div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- Overlay de chargement / Loading overlay -->
+  <div class="loading-overlay hidden" id="loadingOverlay" aria-live="assertive">
+    <!-- Animation simple / Simple animation -->
+    <div class="spinner" aria-hidden="true"></div>
+    <!-- Texte de chargement / Loading text -->
+    <p data-i18n="loadingText">Chargement de la météo...</p>
+  </div>
+
+  <!-- Configuration / Configuration -->
+  <script src="./scripts/config.js"></script>
+  <!-- Traductions / Translations -->
+  <script src="./scripts/translations.js"></script>
+  <!-- Icônes et libellés météo / Weather icons and labels -->
+  <script src="./scripts/weatherIcons.js"></script>
+  <!-- Interface / Interface -->
+  <script src="./scripts/uiManager.js"></script>
+  <!-- Données météo / Weather data -->
+  <script src="./scripts/weatherManager.js"></script>
+  <!-- Point d'entrée / Entry point -->
+  <script src="./scripts/app.js"></script>
 </body>
 
 </html>

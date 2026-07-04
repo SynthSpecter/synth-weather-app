@@ -1,75 +1,155 @@
-# SynthWeather ☀️
+# synth-weather-app
 
-Une application météo simple et fonctionnelle | A simple and functional weather application
+## Français
 
----
+`synth-weather-app` est une application météo synthwave en HTML, CSS et JavaScript. Elle permet de chercher une ville, d'utiliser la position du navigateur, de consulter la météo actuelle et de lire une prévision courte sur cinq jours.
 
-## À propos | About
+### Fonctionnalités
 
-SynthWeather est une application météo web qui permet d'obtenir les conditions météorologiques actuelles pour n'importe quelle ville dans le monde.  
-| SynthWeather is a web weather application that allows getting current weather conditions for any city in the world.  
+- Recherche météo par ville.
+- Géolocalisation via le navigateur.
+- Météo actuelle : température, ressenti, vent, humidité, pression, nuages et précipitations.
+- Prévisions sur cinq jours.
+- Historique local des recherches.
+- Interface bilingue français/anglais.
+- Thème synthwave et thème clair.
+- Cache mémoire court pour éviter des appels répétés pendant la session.
+- Code commenté en français/anglais pour faciliter la lecture.
+- Aucun framework et aucune clé API à stocker côté client.
 
----
+### Source météo
 
-## Fonctionnalités | Features
+L'application utilise les API publiques Open-Meteo :
 
-- ☀️ Affichage des conditions météo actuelles | Display of current weather conditions  
-- 🌍 Recherche par nom de ville | Search by city name  
-- 📍 Détection de la position géographique | Geographic position detection  
-- 🌐 Interface bilingue (Français/Anglais) | Bilingual interface (French/English)  
-- 🕘 Historique des recherches récentes | Recent search history  
-- 📊 Menu latéral avec détails météorologiques | Side menu with weather details  
-- ⏳ Indicateur de chargement | Loading indicator  
-- ⚠️ Gestion des erreurs | Error handling  
+- Geocoding API pour transformer une ville en coordonnées.
+- Forecast API pour récupérer la météo actuelle et les prévisions.
 
----
+### Lancer l'application
 
-## Installation | Installation
+Tu peux ouvrir `index.html` directement dans ton navigateur.
 
-1. Obtenez une clé API gratuite sur [Weatherstack](https://weatherstack.com/)  
-   | Get a free API key from [Weatherstack](https://weatherstack.com/)  
-2. Remplacez la valeur `API_KEY` dans `scripts/config.js` par votre clé  
-   | Replace the `API_KEY` value in `scripts/config.js` with your key  
-3. Ouvrez `index.html` dans votre navigateur préféré  
-   | Open `index.html` in your preferred browser  
+Tu peux aussi lancer le serveur local fourni :
 
----
+```bash
+npm run dev
+```
 
-## Contribuer | Contribute
+L'application sera disponible sur `http://localhost:4176`.
 
-Ce projet est ouvert aux contributions. Voici quelques pistes d'amélioration :  
-| This project is open to contributions. Here are some improvement ideas:  
+### Vérifier le code
 
-- Implémenter un backend pour cacher la clé API | Implement a backend to hide the API key  
-- Améliorer le système de cache | Improve the cache system  
-- Ajouter des prévisions à long terme | Add long-term forecasts  
-- Améliorer la gestion des erreurs | Improve error handling  
-- Optimiser l’accessibilité | Improve accessibility  
+```bash
+npm run check
+```
 
-Pour contribuer | To contribute:  
+Cette commande vérifie la syntaxe des fichiers JavaScript.
 
-1. Forkez le projet | Fork the project  
-2. Créez une branche (git checkout -b ma-fonctionnalite) | Create a branch (git checkout -b my-feature)  
-3. Commitez vos changements (git commit -am "Ajout d'une fonctionnalité") | Commit your changes (git commit -am "Added a feature")  
-4. Pushez la branche (git push origin ma-fonctionnalite) | Push the branch (git push origin my-feature)  
-5. Ouvrez une Pull Request | Open a Pull Request  
+### Structure
 
----
+```text
+synth-weather-app/
+├── index.html
+├── package.json
+├── assets/
+│   ├── data/
+│   │   └── Multilingual_Weather_Conditions.csv
+│   └── fonts/
+│       └── Audiowide-Regular.ttf
+├── styles/
+│   └── main.css
+└── scripts/
+    ├── config.js
+    ├── translations.js
+    ├── weatherIcons.js
+    ├── uiManager.js
+    ├── weatherManager.js
+    ├── app.js
+    └── server.js
+```
 
-## Remarques | Notes
+### Pistes d'amélioration
 
-Ce projet a été développé avec l’assistance d’un système d’IA. Le code est fonctionnel mais reste perfectible et pourrait être amélioré pour atteindre une qualité de production.  
-| This project was developed with the assistance of an AI system. The code works but could be improved to reach production quality.  
+- Ajouter une carte météo.
+- Ajouter les favoris persistants.
+- Ajouter un mode unités impériales.
+- Ajouter une vue heure par heure.
+- Ajouter une gestion offline avec dernier résultat sauvegardé.
 
----
+## English
 
-## Contact
+`synth-weather-app` is a synthwave weather app built with HTML, CSS, and JavaScript. It lets users search for a city, use browser location, view current weather, and read a short five-day forecast.
 
-Auteur : Kévin T.L.  
-📧 Email : kev.tl63@gmail.com
----
+### Features
 
-## Remerciements | Acknowledgments
+- Weather search by city.
+- Browser geolocation.
+- Current weather: temperature, feels-like, wind, humidity, pressure, clouds, and precipitation.
+- Five-day forecast.
+- Local search history.
+- French/English interface.
+- Synthwave theme and light theme.
+- Short in-memory cache to avoid repeated calls during a session.
+- French/English comments to make the code easier to understand.
+- No framework and no client-side API key to store.
 
-Merci à l’assistant IA pour son aide, et aux futurs développeurs qui feront évoluer SynthWeather 🌦️.  
-| Thanks to the AI assistant for its help, and to future developers who will improve SynthWeather 🌦️.  
+### Weather Source
+
+The app uses the public Open-Meteo APIs:
+
+- Geocoding API to turn a city into coordinates.
+- Forecast API to load current weather and forecasts.
+
+### Run The App
+
+You can open `index.html` directly in your browser.
+
+You can also start the included local server:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:4176`.
+
+### Check The Code
+
+```bash
+npm run check
+```
+
+This command checks the syntax of the JavaScript files.
+
+### Structure
+
+```text
+synth-weather-app/
+├── index.html
+├── package.json
+├── assets/
+│   ├── data/
+│   │   └── Multilingual_Weather_Conditions.csv
+│   └── fonts/
+│       └── Audiowide-Regular.ttf
+├── styles/
+│   └── main.css
+└── scripts/
+    ├── config.js
+    ├── translations.js
+    ├── weatherIcons.js
+    ├── uiManager.js
+    ├── weatherManager.js
+    ├── app.js
+    └── server.js
+```
+
+### Improvement Ideas
+
+- Add a weather map.
+- Add persistent favorites.
+- Add imperial units.
+- Add an hourly view.
+- Add offline handling with the last saved result.
+
+## Licence / License
+
+MIT
